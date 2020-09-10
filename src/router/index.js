@@ -44,9 +44,9 @@ export const constantRoutes = [
   },
 
   {
-    path: '/',
+    path: '/dashboard',
     component: Layout,
-    redirect: '/dashboard',
+    // redirect: '/dashboard',
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
