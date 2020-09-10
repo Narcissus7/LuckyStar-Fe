@@ -164,12 +164,14 @@ export const constantRoutes = [
   // },
 
   {
-    path: 'external-link',
+    path: '/history',
     component: Layout,
     children: [
       {
-        path: 'http://www.cwl.gov.cn/kjxx/ssq/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'history',
+        name: 'History',
+        component: () => import('@/views/history/index'),
+        meta: { title: 'History', icon: 'form' }
       }
     ]
   },

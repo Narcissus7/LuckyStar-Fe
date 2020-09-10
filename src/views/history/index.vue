@@ -1,6 +1,5 @@
 <template>
   <div class="app-container">
-<!--    <div>Lucky Star</div>-->
     <el-table
       :data="list"
       element-loading-text="Loading"
@@ -9,40 +8,40 @@
     >
       <el-table-column label="Lucky 🌟" align="center" width="95">
         <template slot-scope="scope">
-          <el-button type="danger" circle>{{ scope.row[0] }}</el-button>
+          <el-button type="danger" circle>{{ scope.row.number[0] }}</el-button>
         </template>
       </el-table-column>
       <el-table-column align="center" width="95">
         <template slot-scope="scope">
-          <el-button type="danger" circle>{{ scope.row[1] }}</el-button>
+          <div>开奖日期：{{ scope.row.date }}</div>
+        </template>
+        <template slot-scope="scope">
+          <el-button type="danger" circle>{{ scope.row.number[1] }}</el-button>
         </template>
       </el-table-column>
       <el-table-column align="center" width="95">
         <template slot-scope="scope">
-          <el-button type="danger" circle>{{ scope.row[2] }}</el-button>
+          <el-button type="danger" circle>{{ scope.row.number[2] }}</el-button>
         </template>
       </el-table-column>
       <el-table-column align="center" width="95">
         <template slot-scope="scope">
-          <el-button type="danger" circle>{{ scope.row[3] }}</el-button>
+          <el-button type="danger" circle>{{ scope.row.number[3] }}</el-button>
         </template>
       </el-table-column>
       <el-table-column align="center" width="95">
         <template slot-scope="scope">
-          <el-button type="danger" circle>{{ scope.row[4] }}</el-button>
+          <el-button type="danger" circle>{{ scope.row.number[4] }}</el-button>
         </template>
       </el-table-column>
       <el-table-column align="center" width="95">
         <template slot-scope="scope">
-          <el-button type="danger" circle>{{ scope.row[5] }}</el-button>
+          <el-button type="danger" circle>{{ scope.row.number[5] }}</el-button>
         </template>
       </el-table-column>
       <el-table-column align="center" width="200">
-        <template slot="header">
-          <el-button type="warning" size="medium" @click="fetchData()">换一组</el-button>
-        </template>
         <template slot-scope="scope">
-          <el-button type="primary" circle>{{ scope.row[6] }}</el-button>
+          <el-button type="primary" circle>{{ scope.row.number[6] }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -50,7 +49,7 @@
 </template>
 
 <script>
-import { getList } from '@/api/lucky'
+import { getList } from '@/api/history'
 
 export default {
   filters: {
@@ -76,7 +75,7 @@ export default {
     fetchData() {
       this.listLoading = true
       getList().then(response => {
-        // console.log(response.data.data)
+        console.log(response.data.data)
         this.list = response.data.data
         this.listLoading = false
       })
