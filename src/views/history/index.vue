@@ -1,20 +1,20 @@
 <template>
   <div class="app-container">
+    <div :data="list" style="color: #5a5e66">
+      <span>开奖期数: {{ list ? list[0].code : '' }}</span>
+      <el-divider direction="vertical"></el-divider>
+      <span>开奖日期: {{ list ? list[0].date : '' }}</span>
+    </div>
     <el-table
       :data="list"
       element-loading-text="Loading"
-      fit
-      highlight-current-row
     >
-      <el-table-column label="Lucky 🌟" align="center" width="95">
+      <el-table-column align="center" width="95">
         <template slot-scope="scope">
           <el-button type="danger" circle>{{ scope.row.number[0] }}</el-button>
         </template>
       </el-table-column>
       <el-table-column align="center" width="95">
-        <template slot-scope="scope">
-          <div>开奖日期：{{ scope.row.date }}</div>
-        </template>
         <template slot-scope="scope">
           <el-button type="danger" circle>{{ scope.row.number[1] }}</el-button>
         </template>
@@ -75,7 +75,6 @@ export default {
     fetchData() {
       this.listLoading = true
       getList().then(response => {
-        console.log(response.data.data)
         this.list = response.data.data
         this.listLoading = false
       })
